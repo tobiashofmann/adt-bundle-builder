@@ -82,7 +82,7 @@ The build will only add the ADT plugins. All available ADT plugins will be added
 ```json
 exec: {
   eclipse: {
-    command: 'build\\eclipse\\eclipse.exe -application org.eclipse.equinox.p2.director -repository https://download.eclipse.org/releases/2025-03,https://tools.hana.ondemand.com/latest -installIU com.sap.adt.tools.bopf.devedition.feature.group,com.sap.adt.core.devedition.feature.group,com.sap.adt.tools.hana.devedition.feature.group,com.sap.adt.wda.core.devedition.feature.group,com.sap.adt.pitools.tlf.devedition.feature.group -tag AddADT -destination .\\build\\eclipse -profile epp.package.jee.profile',
+    command: 'build\\eclipse\\eclipse.exe -application org.eclipse.equinox.p2.director -repository https://download.eclipse.org/releases/2025-03,https://tools.hana.ondemand.com/latest,https://sap.github.io/abap-cleaner/updatesite -installIU com.sap.adt.tools.bopf.devedition.feature.group,com.sap.adt.core.devedition.feature.group,com.sap.adt.tools.hana.devedition.feature.group,com.sap.adt.wda.core.devedition.feature.group,com.sap.adt.pitools.tlf.devedition.feature.group,com.sap.adt.abapcleaner.feature.feature.group -tag AddADT -destination .\\build\\eclipse -profile epp.package.jee.profile',
     stdout: true,
     stderr: true
   },
@@ -113,6 +113,7 @@ URL for Eclipse JEE: [Mirror 1045](https://www.eclipse.org/downloads/download.ph
 
 - Eclipse Update site: 2025-03 - https://download.eclipse.org/releases/2025-03
 - Update site ADT https://tools.hana.ondemand.com/latest
+- Update site ABAP Cleaner https://sap.github.io/abap-cleaner/updatesite
 
 ### ADT feature IDs
 
@@ -124,12 +125,15 @@ The following ADT tools / features will be installed:
 - com.sap.adt.wda.core.devedition.feature.group
 - com.sap.adt.pitools.tlf.devedition.feature.group
 
+### ABAP Cleaner feature IDs
+
+- com.sap.adt.abapcleaner.feature.feature.group
+
 ### (to be added)
 
-ABAP Cleaner
+(further add-ons) 
 
-- Update site: https://sap.github.io/abap-cleaner/updatesite
-- Feature: com.sap.adt.abapcleaner.feature.feature.group
+- tbd
 
 The command to run Eclipse and install ADT is not run by GruntJS. Npm will run the command in a shell. This is because running the command from GruntJS resulted in performance problems or even crashed.
 
@@ -141,4 +145,4 @@ p2 Director Application: eclipsec.exe
 
 Command:
 
-build\eclipse\eclipsec.exe -application org.eclipse.equinox.p2.director -repository https://download.eclipse.org/releases/2025-03,https://tools.hana.ondemand.com/latest -installIU com.sap.adt.tools.bopf.devedition.feature.group,com.sap.adt.core.devedition.feature.group,com.sap.adt.tools.hana.devedition.feature.group,com.sap.adt.wda.core.devedition.feature.group,com.sap.adt.pitools.tlf.devedition.feature.group -tag AddADT -destination .\\build\\eclipse -profile epp.package.jee
+build\eclipse\eclipsec.exe -application org.eclipse.equinox.p2.director -repository https://download.eclipse.org/releases/2025-03,https://tools.hana.ondemand.com/latest,https://sap.github.io/abap-cleaner/updatesite -installIU com.sap.adt.tools.bopf.devedition.feature.group,com.sap.adt.core.devedition.feature.group,com.sap.adt.tools.hana.devedition.feature.group,com.sap.adt.wda.core.devedition.feature.group,com.sap.adt.pitools.tlf.devedition.feature.group,com.sap.adt.abapcleaner.feature.feature.group -tag AddADT -destination .\\build\\eclipse -profile epp.package.jee
