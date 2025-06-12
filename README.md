@@ -2,6 +2,10 @@
 
 This project builds Eclipse including the [ADT plugin](https://tools.hana.ondemand.com/#abap). The result is a portable version of Eclipse including the ABAP development tools. This portable Version can be used by SAP developers to run their own Eclipse version from a folder, USB drive, or by Citrix admins to provide ADT in a Citrix environment.
 
+## Current release
+
+![Eclipse 2025-6](images/R/EclipseSplashScreen-2025-6.png)
+
 ## Build
 
 The short version to get your version of Eclipse + ADT:
@@ -51,7 +55,18 @@ The target is a Windows version of Eclipse and ADT. Therefore, a Windows compute
 The build is done by running a set of [GruntJS](https://www.gruntjs.com) plugins. The starting point of the build process is the downloaded Eclipse ZIP. As Eclipse is not offering a default download URL to get the latest version, the URL needs to be provided manually.
 
 An example URL:
-https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2025-03/R/eclipse-jee-2025-03-R-win32-x86_64.zip&mirror_id=1045
+
+https://ftp.halifax.rwth-aachen.de/eclipse/technology/epp/downloads/release/2025-06/R/eclipse-jee-2025-06-R-win32-x86_64.zip
+
+From the [download page of Eclipse](https://www.eclipse.org/downloads/packages/) select the Java package.
+
+![Download Eclipse Java package](images/R/image.png)
+
+Click on download and the extract the URL of the file from the download history / URL.
+
+![Download from mirror](images/R/image-1.png)
+
+![Download URL from browser download history](images/R/image-2.png)
 
 ## Configuration
 
@@ -70,7 +85,7 @@ downloadfile: {
     overwriteEverytime: true
   },
   files: {
-    'eclipse.zip': 'https://ftp.halifax.rwth-aachen.de/eclipse/technology/epp/downloads/release/2025-03/R/eclipse-jee-2025-03-R-win32-x86_64.zip'
+    'eclipse.zip': 'https://ftp.halifax.rwth-aachen.de/eclipse/technology/epp/downloads/release/2025-06/R/eclipse-jee-2025-06-R-win32-x86_64.zip'
   }
 },
 ```
