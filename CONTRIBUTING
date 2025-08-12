@@ -1,0 +1,11 @@
+# CONTRIBUTING
+
+Feel free to use the project to build your ADT. In case you find an issue, bug or want to contribute by adding changes, like adding a new add-on, please feel free to do so.
+
+For each contribution, create a new PR. Add the necessary information to make it easier to understand your PR:
+
+- Motivation: what problem is the PR solving?
+- Impact: is this a general solution valid for everyone or only for a specific user (group)?
+- Information: provide additional information on the PR. Is there any web site / git repo regarding the add-on available?
+
+You can first create an issue for the PR as this allows to better communicate any changes.
