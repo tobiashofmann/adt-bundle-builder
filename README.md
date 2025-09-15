@@ -2,9 +2,9 @@
 
 This project builds Eclipse including the [ADT plugin](https://tools.hana.ondemand.com/#abap). The result is a portable version of Eclipse including the ABAP development tools. This portable Version can be used by SAP developers to run their own Eclipse version from a folder, USB drive, or by Citrix admins to provide ADT in a Citrix environment.
 
-## Current release
+## Current Eclipse release
 
-![Eclipse 2025-6](images/R/EclipseSplashScreen-2025-6.png)
+![Eclipse 2025-6](images/R/splash.png)
 
 ## Build
 
@@ -56,7 +56,7 @@ The build is done by running a set of [GruntJS](https://www.gruntjs.com) plugins
 
 An example URL:
 
-https://ftp.halifax.rwth-aachen.de/eclipse/technology/epp/downloads/release/2025-06/R/eclipse-jee-2025-06-R-win32-x86_64.zip
+https://eclipse.mirror.liteserver.nl/technology/epp/downloads/release/2025-09/R/eclipse-jee-2025-09-R-win32-x86_64.zip
 
 From the [download page of Eclipse](https://www.eclipse.org/downloads/packages/) select the Java package.
 
@@ -85,7 +85,7 @@ downloadfile: {
     overwriteEverytime: true
   },
   files: {
-    'eclipse.zip': 'https://ftp.halifax.rwth-aachen.de/eclipse/technology/epp/downloads/release/2025-06/R/eclipse-jee-2025-06-R-win32-x86_64.zip'
+    'eclipse.zip': 'https://eclipse.mirror.liteserver.nl/technology/epp/downloads/release/2025-09/R/eclipse-jee-2025-09-R-win32-x86_64.zip'
   }
 },
 ```
@@ -122,7 +122,7 @@ The ADT bundle is created using the [Eclipse P2 Director application](https://he
 A latest Eclipse (Java Bundle) is used as the source for building the ADT bundle.
 Eclipse Downloads: https://www.eclipse.org/downloads/packages/
 
-URL for Eclipse JEE: [Mirror 1045](https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2025-03/R/eclipse-jee-2025-03-R-win32-x86_64.zip&mirror_id=1045)
+URL for Eclipse JEE: [Mirror 1045](https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2025-09/R/eclipse-jee-2025-09-R-win32-x86_64.zip&mirror_id=1045)
 
 ### Eclipse installation
 
@@ -164,11 +164,36 @@ The [DSAG ADT Guide / Leitfaden](https://1dsag.github.io/ADT-Leitfaden/plug-ins/
 
 ### (to be added)
 
-(further add-ons) 
+(further add-ons)
 
 - Further add-ons can be added manually. If you have a request to get an add-on added to the build process of the ADT bundle builder, please open an issue on the GitHub project page: https://github.com/tobiashofmann/adt-bundle-builder
 
 The command to run Eclipse and install ADT is not run by GruntJS. Npm will run the command in a shell. This is because running the command from GruntJS resulted in performance problems or even crashed.
+
+## Run individual build steps
+
+The build runs several Grunt tasks.
+
+```json
+grunt.registerTask('1', ['clean:all']);
+grunt.registerTask('2', ['mkdir:build']);
+grunt.registerTask('3', ['downloadfile']);
+grunt.registerTask('4', ['unzip']);
+grunt.registerTask('5', ['zip']);
+grunt.registerTask('6', ['clean:build']);
+```
+
+You can run them individually. Either by running npx grunt [[taskid]] like npx grunt 1 or using npm. Please note that Grunt is _not_ used to run the Eclipse packaging step. The shell is used for this.
+
+```sh
+npm run clean
+npm run prepare
+npm run download
+npm run unzip
+npm run shell
+npm run zip
+npm run cleanup
+```
 
 ## Standalone command
 
