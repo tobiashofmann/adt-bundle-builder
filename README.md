@@ -4,7 +4,7 @@ This project builds Eclipse including the [ADT plugin](https://tools.hana.ondema
 
 ## Current Eclipse release
 
-![Eclipse 2025-6](images/R/splash.png)
+![Eclipse 2025-9](images/R/splash.png)
 
 ## Build
 
@@ -146,7 +146,7 @@ The following ADT tools / features will be installed:
 
 The [DSAG ADT Guide / Leitfaden](https://1dsag.github.io/ADT-Leitfaden/plug-ins/open-source-adt-plugins/#eingabefeld-zur-ausf%C3%BChrung-von-transaktions-codes) lists several ADT plugins worth using. Some of those are added automatically to the ADT build. These are the plugins: ABAP Cleaner, ADT Extensions, Quick Fixes and Quick Fices for S4 Conversion
 
-### ABAP Cleaner feature IDs
+### ABAP Cleaner
 
 - com.sap.adt.abapcleaner.feature.feature.group
 
