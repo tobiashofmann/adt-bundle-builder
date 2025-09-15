@@ -1,6 +1,6 @@
 {
     "name": "adt-bundle-builder",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "Eclipse with ADT bundle builder for SAP developers.",
     "main": "index.js",
     "scripts": {
@@ -34,3 +34,5 @@
         "grunt-zip": "^1.0.0"
     }
 }
+
+
