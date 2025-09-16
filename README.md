@@ -144,7 +144,7 @@ The following ADT tools / features will be installed:
 
 ## Additional ADT Plugins
 
-The [DSAG ADT Guide / Leitfaden](https://1dsag.github.io/ADT-Leitfaden/plug-ins/open-source-adt-plugins/#eingabefeld-zur-ausf%C3%BChrung-von-transaktions-codes) lists several ADT plugins worth using. Some of those are added automatically to the ADT build. These are the plugins: ABAP Cleaner, ADT Extensions, Quick Fixes and Quick Fices for S4 Conversion
+The [DSAG ADT Guide / Leitfaden](https://1dsag.github.io/ADT-Leitfaden/plug-ins/open-source-adt-plugins/#eingabefeld-zur-ausf%C3%BChrung-von-transaktions-codes) lists several ADT plugins worth using. Some of those are added automatically to the ADT build. These are the plugins: ABAP Cleaner, ADT Extensions, Quick Fixes and Quick Fixes for S4 Conversion
 
 ### ABAP Cleaner
 
@@ -206,3 +206,4 @@ Command:
 ```sh
 build\eclipse\eclipsec.exe -application org.eclipse.equinox.p2.director -repository https://download.eclipse.org/releases/2025-03,https://tools.hana.ondemand.com/latest,https://sap.github.io/abap-cleaner/updatesite,https://fidley.github.io/ADTPluginsUpdateSite/UpdateSite/,https://leuc.de/abapquickfixs4c -installIU com.sap.adt.tools.bopf.devedition.feature.group,com.sap.adt.core.devedition.feature.group,com.sap.adt.tools.hana.devedition.feature.group,com.sap.adt.wda.core.devedition.feature.group,com.sap.adt.pitools.tlf.devedition.feature.group,com.sap.adt.abapcleaner.feature.feature.group,com.abapblog.adt.quickfix.feature.feature.group,com.abapblog.adt.extension.feature.feature.group,de.leuc.adt.quickfix.feature.group -tag AddADT -destination .\\build\\eclipse -profile epp.package.jee -tag AddADT -destination .\\build\\eclipse -profile epp.package.jee
 ```
+
