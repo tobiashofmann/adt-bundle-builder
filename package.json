@@ -1,6 +1,6 @@
 {
     "name": "adt-bundle-builder",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "description": "Eclipse with ADT bundle builder for SAP developers.",
     "main": "index.js",
     "scripts": {
@@ -9,7 +9,7 @@
         "prepare": "npx grunt 2",
         "download": "npx grunt 3",
         "unzip": "npx grunt 4",
-        "shell": "build\\eclipse\\eclipsec.exe -application org.eclipse.equinox.p2.director -repository https://download.eclipse.org/releases/2025-12,https://tools.hana.ondemand.com/latest,https://sap.github.io/abap-cleaner/updatesite,https://fidley.github.io/ADTPluginsUpdateSite/UpdateSite/,https://leuc.de/abapquickfixs4c -installIU com.sap.adt.tools.bopf.devedition.feature.group,com.sap.adt.core.devedition.feature.group,com.sap.adt.tools.hana.devedition.feature.group,com.sap.adt.wda.core.devedition.feature.group,com.sap.adt.pitools.tlf.devedition.feature.group,com.sap.adt.abapcleaner.feature.feature.group,com.abapblog.adt.quickfix.feature.feature.group,com.abapblog.adt.extension.feature.feature.group,de.leuc.adt.quickfix.feature.group,ABAP_Favorites_Feature_Project.feature.group -tag AddADTBundle -destination .\\build\\eclipse -profile epp.package.jee",
+        "shell": "build\\eclipse\\eclipsec.exe -application org.eclipse.equinox.p2.director -repository https://download.eclipse.org/releases/2026-03,https://tools.hana.ondemand.com/latest,https://sap.github.io/abap-cleaner/updatesite,https://fidley.github.io/ADTPluginsUpdateSite/UpdateSite/,https://leuc.de/abapquickfixs4c -installIU com.sap.adt.tools.bopf.devedition.feature.group,com.sap.adt.core.devedition.feature.group,com.sap.adt.tools.hana.devedition.feature.group,com.sap.adt.wda.core.devedition.feature.group,com.sap.adt.pitools.tlf.devedition.feature.group,com.sap.adt.abapcleaner.feature.feature.group,com.abapblog.adt.quickfix.feature.feature.group,com.abapblog.adt.extension.feature.feature.group,de.leuc.adt.quickfix.feature.group,ABAP_Favorites_Feature_Project.feature.group -tag AddADTBundle -destination .\\build\\eclipse -profile epp.package.jee",
         "zip": "npx grunt 5",
         "cleanup": "npx grunt 6"
     },
@@ -23,10 +23,10 @@
     "author": "Tobias Hofmann",
     "license": "Apache-2.0",
     "dependencies": {
-        "grunt": "^1.6.1",
-        "grunt-cli": "^1.5.0"
     },
     "devDependencies": {
+        "grunt": "^1.6.1",
+        "grunt-cli": "^1.5.0",
         "grunt-contrib-clean": "^2.0.1",
         "grunt-downloadfile": "^2.1.1",
         "grunt-exec": "^3.0.0",

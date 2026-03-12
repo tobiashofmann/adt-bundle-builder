@@ -4,7 +4,7 @@ This project builds Eclipse including the [ADT plugin](https://tools.hana.ondema
 
 ## Current Eclipse release
 
-![Eclipse 2025-9](images/R/splash.png)
+![Eclipse 2026-3](images/R/splash.png)
 
 ## Build
 
@@ -56,7 +56,7 @@ The build is done by running a set of [GruntJS](https://www.gruntjs.com) plugins
 
 An example URL:
 
-https://ftp.halifax.rwth-aachen.de/eclipse/technology/epp/downloads/release/2025-12/R/eclipse-jee-2025-12-R-win32-x86_64.zip
+https://ftp.halifax.rwth-aachen.de/eclipse/technology/epp/downloads/release/2026-03/R/eclipse-jee-2026-03-R-win32-x86_64.zip
 
 From the [download page of Eclipse](https://www.eclipse.org/downloads/packages/) select the Java package.
 
@@ -85,7 +85,7 @@ downloadfile: {
     overwriteEverytime: true
   },
   files: {
-    'eclipse.zip': 'https://ftp.halifax.rwth-aachen.de/eclipse/technology/epp/downloads/release/2025-12/R/eclipse-jee-2025-12-R-win32-x86_64.zip'
+    'eclipse.zip': 'https://ftp.halifax.rwth-aachen.de/eclipse/technology/epp/downloads/release/2026-03/R/eclipse-jee-2026-03-R-win32-x86_64.zip'
   }
 },
 ```
@@ -97,7 +97,7 @@ The build will only add the ADT plugins. All available ADT plugins will be added
 ```json
 exec: {
   eclipse: {
-    command: 'build\\eclipse\\eclipse.exe -application org.eclipse.equinox.p2.director -repository https://download.eclipse.org/releases/2025-12,https://tools.hana.ondemand.com/latest,https://sap.github.io/abap-cleaner/updatesite,https://fidley.github.io/ADTPluginsUpdateSite/UpdateSite/,https://leuc.de/abapquickfixs4c -installIU com.sap.adt.tools.bopf.devedition.feature.group,com.sap.adt.core.devedition.feature.group,com.sap.adt.tools.hana.devedition.feature.group,com.sap.adt.wda.core.devedition.feature.group,com.sap.adt.pitools.tlf.devedition.feature.group,com.sap.adt.abapcleaner.feature.feature.group,com.abapblog.adt.quickfix.feature.feature.group,com.abapblog.adt.extension.feature.feature.group,de.leuc.adt.quickfix.feature.group -tag AddADT -destination .\\build\\eclipse -profile epp.package.jee',
+    command: 'build\\eclipse\\eclipse.exe -application org.eclipse.equinox.p2.director -repository https://download.eclipse.org/releases/2026-03,https://tools.hana.ondemand.com/latest,https://sap.github.io/abap-cleaner/updatesite,https://fidley.github.io/ADTPluginsUpdateSite/UpdateSite/,https://leuc.de/abapquickfixs4c -installIU com.sap.adt.tools.bopf.devedition.feature.group,com.sap.adt.core.devedition.feature.group,com.sap.adt.tools.hana.devedition.feature.group,com.sap.adt.wda.core.devedition.feature.group,com.sap.adt.pitools.tlf.devedition.feature.group,com.sap.adt.abapcleaner.feature.feature.group,com.abapblog.adt.quickfix.feature.feature.group,com.abapblog.adt.extension.feature.feature.group,de.leuc.adt.quickfix.feature.group -tag AddADT -destination .\\build\\eclipse -profile epp.package.jee',
     stdout: true,
     stderr: true
   },
@@ -122,11 +122,11 @@ The ADT bundle is created using the [Eclipse P2 Director application](https://he
 A latest Eclipse (Java Bundle) is used as the source for building the ADT bundle.
 Eclipse Downloads: https://www.eclipse.org/downloads/packages/
 
-URL for Eclipse JEE: [Mirror 1045](https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2025-12/R/eclipse-jee-2025-12-R-win32-x86_64.zip&mirror_id=1045)
+URL for Eclipse JEE: [Mirror 1045](https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2026-03/R/eclipse-jee-2026-03-R-win32-x86_64.zip&mirror_id=1045)
 
 ### Eclipse installation
 
-- Eclipse Update site: 2025-12 - https://download.eclipse.org/releases/2025-12
+- Eclipse Update site: 2026-03 - https://download.eclipse.org/releases/2026-03
 - Update site ADT https://tools.hana.ondemand.com/latest
 - Update site ABAP Cleaner https://sap.github.io/abap-cleaner/updatesite
 - Update site ABAP Quick Fix, Favorites, Commands https://fidley.github.io/ADTPluginsUpdateSite/UpdateSite/
@@ -208,6 +208,5 @@ p2 Director Application: **eclipsec.exe**
 Command:
 
 ```sh
-build\eclipse\eclipsec.exe -application org.eclipse.equinox.p2.director -repository https://download.eclipse.org/releases/2025-12,https://tools.hana.ondemand.com/latest,https://sap.github.io/abap-cleaner/updatesite,https://fidley.github.io/ADTPluginsUpdateSite/UpdateSite/,https://leuc.de/abapquickfixs4c -installIU com.sap.adt.tools.bopf.devedition.feature.group,com.sap.adt.core.devedition.feature.group,com.sap.adt.tools.hana.devedition.feature.group,com.sap.adt.wda.core.devedition.feature.group,com.sap.adt.pitools.tlf.devedition.feature.group,com.sap.adt.abapcleaner.feature.feature.group,com.abapblog.adt.quickfix.feature.feature.group,com.abapblog.adt.extension.feature.feature.group,de.leuc.adt.quickfix.feature.group,ABAP_Favorites_Feature_Project.feature.group -tag AddADTBundle -destination .\\build\\eclipse -profile epp.package.jee -destination .\\build\\eclipse -profile epp.package.jee
+build\eclipse\eclipsec.exe -application org.eclipse.equinox.p2.director -repository https://download.eclipse.org/releases/2026-03,https://tools.hana.ondemand.com/latest,https://sap.github.io/abap-cleaner/updatesite,https://fidley.github.io/ADTPluginsUpdateSite/UpdateSite/,https://leuc.de/abapquickfixs4c -installIU com.sap.adt.tools.bopf.devedition.feature.group,com.sap.adt.core.devedition.feature.group,com.sap.adt.tools.hana.devedition.feature.group,com.sap.adt.wda.core.devedition.feature.group,com.sap.adt.pitools.tlf.devedition.feature.group,com.sap.adt.abapcleaner.feature.feature.group,com.abapblog.adt.quickfix.feature.feature.group,com.abapblog.adt.extension.feature.feature.group,de.leuc.adt.quickfix.feature.group,ABAP_Favorites_Feature_Project.feature.group -tag AddADTBundle -destination .\\build\\eclipse -profile epp.package.jee -destination .\\build\\eclipse -profile epp.package.jee
 ```
-
