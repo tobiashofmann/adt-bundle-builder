@@ -1,6 +1,7 @@
 build/
 dist/
 downloads/
+eclipse-dist/
 
 # Logs
 logs
