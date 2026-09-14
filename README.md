@@ -47,7 +47,7 @@ The latest LTS release from Node.js should be used. As the build is for Windows,
 
 ## Build information
 
-The target is a Windows version of Eclipse and ADT. Therefore, a Windows computer is required to run the build. The build is done by the Eclipse P2 Director. An Eclipse version is used as the foundation for the build. 
+The target is a Windows version of Eclipse and ADT. Therefore, a Windows computer is required to run the build. The build is done by the Eclipse P2 Director. The Eclipse Platform Runtime Binary is used as the foundation for the build.
 
 - [P2 Director](https://help.eclipse.org/latest/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Fguide%2Fp2_director.html)
 - [Eclipse Download](https://www.eclipse.org/downloads/packages/)
@@ -56,17 +56,15 @@ The build is done by running a set of [GruntJS](https://www.gruntjs.com) plugins
 
 An example URL:
 
-https://ftp.halifax.rwth-aachen.de/eclipse/technology/epp/downloads/release/2026-09/R/eclipse-jee-2026-09-R-win32-x86_64.zip
+https://mirror1.hs-esslingen.de/Mirrors/eclipse//eclipse/downloads/drops4/R-4.41-202608281142/eclipse-platform-4.41-win32-win32-x86_64.zip
 
-From the [download page of Eclipse](https://www.eclipse.org/downloads/packages/) select the Java package.
+From the [download page of Eclipse](https://download.eclipse.org/eclipse/downloads/) select the latest released Eclipse version. Then select the Platform Runtime Binary for Windows.
 
-![Download Eclipse Java package](images/R/image.png)
+![Example: Eclipse Platform Runtime Binary for Windows x84 64bit](images/Eclipse_Platform_Runtime_Binary.png)
 
-Click on download and the extract the URL of the file from the download history / URL.
+Right click on the link to get the direct download link (for instance: https://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-4.41-202608281142/eclipse-platform-4.41-win32-win32-x86_64.zip&mirror_id=1324)
 
-![Download from mirror](images/R/image-1.png)
-
-![Download URL from browser download history](images/R/image-2.png)
+![Download from mirror](images/download_link_mirror.png)
 
 ## Configuration
 
@@ -85,7 +83,7 @@ downloadfile: {
     overwriteEverytime: true
   },
   files: {
-    'eclipse.zip': 'https://ftp.halifax.rwth-aachen.de/eclipse/technology/epp/downloads/release/2026-09/R/eclipse-jee-2026-09-R-win32-x86_64.zip'
+    'eclipse.zip': 'https://mirror1.hs-esslingen.de/Mirrors/eclipse//eclipse/downloads/drops4/R-4.41-202608281142/eclipse-platform-4.41-win32-win32-x86_64.zip'
   }
 },
 ```
@@ -97,7 +95,7 @@ The build will only add the ADT plugins. All available ADT plugins will be added
 ```json
 exec: {
   eclipse: {
-    command: 'build\\eclipse\\eclipse.exe -application org.eclipse.equinox.p2.director -repository https://download.eclipse.org/releases/2026-09,https://tools.hana.ondemand.com/latest,https://sap.github.io/abap-cleaner/updatesite,https://fidley.github.io/ADTPluginsUpdateSite/UpdateSite/,https://leuc.de/abapquickfixs4c -installIU com.sap.adt.tools.bopf.devedition.feature.group,com.sap.adt.core.devedition.feature.group,com.sap.adt.tools.hana.devedition.feature.group,com.sap.adt.wda.core.devedition.feature.group,com.sap.adt.pitools.tlf.devedition.feature.group,com.sap.adt.abapcleaner.feature.feature.group,com.abapblog.adt.quickfix.feature.feature.group,com.abapblog.adt.extension.feature.feature.group,de.leuc.adt.quickfix.feature.group -tag AddADT -destination .\\build\\eclipse -profile epp.package.jee',
+    command: 'build\\eclipse\\eclipse.exe -application org.eclipse.equinox.p2.director -repository https://download.eclipse.org/releases/2026-09,https://tools.hana.ondemand.com/latest,https://sap.github.io/abap-cleaner/updatesite,https://fidley.github.io/ADTPluginsUpdateSite/UpdateSite/,https://leuc.de/abapquickfixs4c -installIU com.sap.adt.tools.bopf.devedition.feature.group,com.sap.adt.core.devedition.feature.group,com.sap.adt.tools.hana.devedition.feature.group,com.sap.adt.wda.core.devedition.feature.group,com.sap.adt.pitools.tlf.devedition.feature.group,com.sap.adt.abapcleaner.feature.feature.group,com.abapblog.adt.quickfix.feature.feature.group,com.abapblog.adt.extension.feature.feature.group,de.leuc.adt.quickfix.feature.group -tag AddADT -destination .\\build\\eclipse -profile SDKProfile',
     stdout: true,
     stderr: true
   },
@@ -119,10 +117,8 @@ The resulting file eclipse-dist.zip is stored in the folder dist.
 
 The ADT bundle is created using the [Eclipse P2 Director application](https://help.eclipse.org/latest/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Fguide%2Fp2_director.html). The build process will instruct the p2 director appplication to connect to the Eclipse update site and to the ADT toooling site to resolve dependencies.
 
-A latest Eclipse (Java Bundle) is used as the source for building the ADT bundle.
-Eclipse Downloads: https://www.eclipse.org/downloads/packages/
-
-URL for Eclipse JEE: [Mirror 1045](https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2026-09/R/eclipse-jee-2026-09-R-win32-x86_64.zip&mirror_id=1045)
+A latest Eclipse Platform Runtime Binary is used as the source for building the ADT bundle.
+Eclipse Downloads: https://download.eclipse.org/eclipse/downloads/
 
 ### Eclipse installation
 
@@ -208,5 +204,15 @@ p2 Director Application: **eclipsec.exe**
 Command:
 
 ```sh
-build\eclipse\eclipsec.exe -application org.eclipse.equinox.p2.director -repository https://download.eclipse.org/releases/2026-09,https://tools.hana.ondemand.com/latest,https://sap.github.io/abap-cleaner/updatesite,https://fidley.github.io/ADTPluginsUpdateSite/UpdateSite/,https://leuc.de/abapquickfixs4c -installIU com.sap.adt.tools.bopf.devedition.feature.group,com.sap.adt.core.devedition.feature.group,com.sap.adt.tools.hana.devedition.feature.group,com.sap.adt.wda.core.devedition.feature.group,com.sap.adt.pitools.tlf.devedition.feature.group,com.sap.adt.abapcleaner.feature.feature.group,com.abapblog.adt.quickfix.feature.feature.group,com.abapblog.adt.extension.feature.feature.group,de.leuc.adt.quickfix.feature.group,ABAP_Favorites_Feature_Project.feature.group -tag AddADTBundle -destination .\\build\\eclipse -profile epp.package.jee -destination .\\build\\eclipse -profile epp.package.jee
+build\eclipse\eclipsec.exe -application org.eclipse.equinox.p2.director -repository https://download.eclipse.org/releases/2026-09,https://tools.hana.ondemand.com/latest,https://sap.github.io/abap-cleaner/updatesite,https://fidley.github.io/ADTPluginsUpdateSite/UpdateSite/,https://leuc.de/abapquickfixs4c -installIU com.sap.adt.tools.bopf.devedition.feature.group,com.sap.adt.core.devedition.feature.group,com.sap.adt.tools.hana.devedition.feature.group,com.sap.adt.wda.core.devedition.feature.group,com.sap.adt.pitools.tlf.devedition.feature.group,com.sap.adt.abapcleaner.feature.feature.group,com.abapblog.adt.quickfix.feature.feature.group,com.abapblog.adt.extension.feature.feature.group,de.leuc.adt.quickfix.feature.group,ABAP_Favorites_Feature_Project.feature.group -tag AddADTBundle -destination .\\build\\eclipse -profile SDKProfile -destination .\\build\\eclipse -profile SDKProfile
 ```
+
+## Eclipse Profiles
+
+A profile can be provided to eclipsec.exe via parameter -profile: eclipsec.exe -profile SDKProfile. To get a list of available profiles that can be used for eclipsec.exe:
+
+- Go to folder: eclipse\p2\org.eclipse.equinox.p2.engine\profileRegistry
+- Each folder name is a profile.
+- ![available eclipse profiles](images/eclipse_profiles.png)
+
+Example: the available profile for a bare Eclipse Platform edition is SDKProfile

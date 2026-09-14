@@ -14,7 +14,7 @@ module.exports = function(grunt) {
         overwriteEverytime: true
       },
       files: {
-        'eclipse.zip': 'https://ftp.halifax.rwth-aachen.de/eclipse/technology/epp/downloads/release/2026-09/R/eclipse-jee-2026-09-R-win32-x86_64.zip'
+        'eclipse.zip': 'https://mirror1.hs-esslingen.de/Mirrors/eclipse//eclipse/downloads/drops4/R-4.41-202608281142/eclipse-platform-4.41-win32-win32-x86_64.zip'
       }
     },
     unzip: {
