@@ -118,7 +118,15 @@ The resulting file eclipse-dist.zip is stored in the folder dist.
 The ADT bundle is created using the [Eclipse P2 Director application](https://help.eclipse.org/latest/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Fguide%2Fp2_director.html). The build process will instruct the p2 director appplication to connect to the Eclipse update site and to the ADT toooling site to resolve dependencies.
 
 A latest Eclipse Platform Runtime Binary is used as the source for building the ADT bundle.
-Eclipse Downloads: https://download.eclipse.org/eclipse/downloads/
+Eclipse Downloads: https://download.eclipse.org/eclipse/downloads/. Only the needed software as indicated by the plugins will be installed.
+
+- Platform features:
+
+![Installed platform features](images/Installed_platform_features.png)
+
+- Installation details (example from 2026-09 release)
+
+![Installation details](images/intallation_details.png)
 
 ### Eclipse installation
 
@@ -194,6 +202,10 @@ npm run shell
 npm run zip
 npm run cleanup
 ```
+
+The time needed to install ADT on the Eclipse Platform Runtime Binary is only a few seconds.
+
+![adt bundle build time](images/adt_bundle_build_time.png)
 
 ## Standalone command
 
