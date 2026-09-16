@@ -1,0 +1,86 @@
+name: Build And Release On New Eclipse
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Daily check at 05:30 UTC
+    - cron: '30 5 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  detect:
+    name: Detect New Eclipse Version
+    runs-on: ubuntu-latest
+    outputs:
+      has_update: ${{ steps.detect.outputs.has_update }}
+      latest_version: ${{ steps.detect.outputs.latest_version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect latest Eclipse and compare with releases
+        id: detect
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          echo "Fetching Eclipse downloads page..."
+          html="$(curl -fsSL https://www.eclipse.org/downloads/packages/)"
+
+          latest="$(printf '%s' "$html" | grep -oE '/technology/epp/downloads/release/[0-9]{4}-[0-9]{2}/R/eclipse-jee-[0-9]{4}-[0-9]{2}-R-win32-x86_64\.zip' | sed -E 's#.*release/([0-9]{4}-[0-9]{2})/R.*#\1#' | head -n1)"
+
+          if [ -z "$latest" ]; then
+            echo "Could not determine latest Eclipse version from downloads page."
+            exit 1
+          fi
+
+          tag="eclipse-${latest}"
+          api_url="https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/tags/${tag}"
+
+          http_code="$(curl -s -o /dev/null -w '%{http_code}' -H 'Authorization: Bearer ${{ github.token }}' -H 'Accept: application/vnd.github+json' "$api_url")"
+
+          if [ "$http_code" = "200" ]; then
+            has_update="false"
+            echo "Release tag ${tag} already exists. No new build needed."
+          elif [ "$http_code" = "404" ]; then
+            has_update="true"
+            echo "No release for ${tag}. Build and release will run."
+          else
+            echo "Unexpected GitHub API response code: ${http_code}"
+            exit 1
+          fi
+
+          echo "latest_version=${latest}" >> "$GITHUB_OUTPUT"
+          echo "has_update=${has_update}" >> "$GITHUB_OUTPUT"
+
+  build_and_release:
+    name: Build Bundle And Publish Release
+    runs-on: windows-latest
+    needs: detect
+    if: needs.detect.outputs.has_update == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build ADT bundle
+        run: npm start
+
+      - name: Publish release with ZIP asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: eclipse-${{ needs.detect.outputs.latest_version }}
+          name: Eclipse ADT Bundle ${{ needs.detect.outputs.latest_version }}
+          generate_release_notes: true
+          files: |
+            dist/eclipse-dist.zip
